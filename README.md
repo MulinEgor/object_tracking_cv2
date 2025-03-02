@@ -1,31 +1,38 @@
-# YOLO Detection с OpenCV
+# Object tracking with cv2
 
-Проект для обнаружения и отслеживания объектов (людей и транспортных средств) с использованием OpenCV и нейронной сети MobileNet.
+Project for detecting and tracking objects (people and vehicles) using OpenCV and MobileNet neural network.
 
-## Структура проекта
+## Project structure
 
 ```
 src/
-├── detection.py # Логика обнаружения и отслеживания
-├── main.py # Основной скрипт для запуска
-weights/ # Папка с весами модели
+├── detection.py - logic for detections with mobile net
+├── main.py - main script for starting tracking
+weights/ - folder with weights for mobile net
 ```
 
-## Запуск проекта
+## Project Setup and Launch
+
+1. Install [uv](https://docs.astral.sh/uv/getting-started/installation/).
+
+2. Install dependencies:
 
 ```bash
-python -m venv .venv # Создание виртуального окружения
-source .venv/bin/activate # Активация виртуального окружения
-pip install .  # Установка зависимостей
-python src/main.py # Запуск проекта
+uv sync 
 ```
 
-## Параметры для конфигурации трекинга и детекции в src/main.py
+3. Launch project:
 
-- `confidence_threshold`: Порог достоверности для обнаружения объектов.
-- `nms_threshold`: Порог перекрытия для NMS.
-- `max_age`: Максимальное количество кадров для отслеживания объекта.
-- `min_hits`: Минимальное количество кадров для подтверждения объекта.
-- `iou_threshold`: Порог перекрытия для IOU.
-- `objects`: Список объектов для обнаружения.
-- `cap_path`: Путь к видеофайлу или номер камеры.
+```bash
+uv run src/main.py
+```
+
+## Configuration Parameters for Tracking and Detection in src/main.py
+
+- confidence_threshold: Confidence threshold for object detection.
+- nms_threshold: Overlap threshold for NMS (Non-Maximum Suppression).
+- max_age: Maximum number of frames to track an object.
+- min_hits: Minimum number of frames to confirm an object.
+- iou_threshold: Intersection over Union threshold.
+- objects: List of objects to detect.
+- cap_path: Path to video file or camera number.
